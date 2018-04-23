@@ -1,0 +1,5 @@
+name: 'Demo Menu'
+type: module
+description: 'An off-canvas multi-level navigation menu'
+core: 8.x
+package: 'Demo'

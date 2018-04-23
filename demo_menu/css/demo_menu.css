@@ -1,0 +1,327 @@
+/*
+ * Basic Global Styles
+ */
+#demo-menu {
+  clear: both;
+  font-family: sans-serif;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+.js #demo-menu {
+  overflow-x: hidden;
+}
+#demo-menu #demo-menu-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #aaa;
+  border-left: 1px solid #aaa;
+  max-width: 335px;
+  overflow-x: hidden;
+  position: absolute;
+  right: -335px;
+  /* The animation controls how quickly the menu is hidden */
+  -webkit-transition: right 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out;
+  width: 80%;
+  z-index: 3;
+}
+#demo-menu #demo-menu-nav a {
+  border-bottom: 1px solid #efefef;
+  color: #072E5D;
+  font-size: 1rem;
+  font-weight: normal;
+  height: 50px;
+  line-height: 50px;
+  text-decoration: none;
+}
+#demo-menu #demo-menu-nav a:hover,
+#demo-menu #demo-menu-nav a.active {
+  color: #126EC1;
+  font-weight: 700;
+  text-decoration: none;
+}
+.js #demo-menu #demo-menu-nav nav {
+  display: none;
+}
+#demo-menu #demo-menu-nav .menu {
+  margin: 0;
+  padding: 0;
+}
+#demo-menu #demo-menu-nav .menu li {
+  display: block;
+  flex-grow: 1;
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0 2vw;
+}
+#demo-menu #demo-menu-nav .menu li.menu-item--expanded > a {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  z-index: 4;
+}
+#demo-menu #demo-menu-nav .menu li.menu-item--expanded .menu {
+  background: #FFFFFF;
+  padding: 0 0 10px 0;
+  position: absolute;
+  top: 0;
+  right: -335px;
+  width: 335px;
+  /* The animation controls how quickly the submenu is hidden */
+  -webkit-transition: right 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  visibility: hidden;
+  z-index: 5;
+}
+#demo-menu #demo-menu-nav .menu li ul a {
+  background: transparent;
+  display: block;
+  height: auto;
+  line-height: 1.5;
+  padding: 15px 0;
+  text-transform: none;
+}
+#demo-menu #demo-menu-nav .menu li ul a.submenu-close {
+  background: url("../images/icon-back.svg") no-repeat 90% 50% #eee;
+  background-size: 8px;
+  font-weight: 700;
+  padding: 20px 2vw;
+}
+#demo-menu #demo-menu-bar-oc {
+  background-color: #eee;
+  text-align: right;
+  width: 100%;
+}
+
+/*
+ * Animation-related styles
+ */
+html.menu-open,
+html.menu-open body {
+  height: 100%;
+  overflow-y: auto;
+  width: 100%;
+}
+html.menu-open body {
+  overflow-y: hidden;
+}
+#demo-menu.menu-open {
+  overflow-x: visible;
+}
+#demo-menu.menu-open #demo-menu-nav {
+  display: block;
+  height: 100vw;
+  overflow-y: scroll;
+  right: 0;
+  /* The animation controls how quickly the menu appears */
+  -webkit-transition: right 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+.js #demo-menu #demo-menu-nav .menu li.menu-item--expanded > a {
+  background: url("../images/arrow.svg") no-repeat 95% 50%;
+  background-size: 10px;
+}
+.js #demo-menu.menu-open #demo-menu-nav nav {
+  display: block;
+}
+#demo-menu.menu-open #demo-menu-nav .menu li.menu-item--expanded.submenu-open ul {
+  height: 100vw;
+  overflow-y: scroll;
+  right: 0;
+  /* The animation controls how quickly the menu appears */
+  -webkit-transition: right 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out;
+  visibility: visible;
+}
+
+/*
+ * Widescreen Styles
+ */
+@media all and (min-width: 1024px) {
+  html.menu-open,
+  html.menu-open body {
+    height: auto;
+    overflow-y: auto;
+    width: auto;
+  }
+  .js #demo-menu {
+    overflow-x: visible;
+  }
+  #demo-menu.menu-open {
+    height: auto;
+  }
+  #demo-menu #demo-menu-bar-oc {
+    display: none;
+  }
+  #demo-menu #demo-menu-nav {
+    background-color: #eee;
+    border-bottom: none;
+    border-left: none;
+    display: block;
+    height: auto;
+    position: relative;
+    max-width: none;
+    overflow-x: visible;
+    right: 0;
+    width: 100%;
+  }
+  #demo-menu.menu-open #demo-menu-nav {
+    height: auto;
+    overflow-x: visible;
+    overflow-y: visible;
+  }
+  .js #demo-menu #demo-menu-nav nav {
+    display: block;
+  }
+  #demo-menu #demo-menu-nav a {
+    border-bottom: 0;
+  }
+
+  #demo-menu #demo-menu-nav .menu li ul a {
+    padding-left: 1.5vw;
+  }
+  #demo-menu #demo-menu-nav .menu li ul a.submenu-close {
+    display: none;
+  }
+  #demo-menu #demo-menu-nav .menu {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    margin: 0px auto;
+    max-width: 1214px;
+    width: 100%;
+  }
+  #demo-menu #demo-menu-nav .menu li {
+    padding: 0;
+    position: relative;
+  }
+  #demo-menu #demo-menu-nav .menu li.menu-item--expanded {
+    width: auto;
+  }
+  #demo-menu #demo-menu-nav .menu li.menu-item--expanded > a {
+    background-color: #eee;
+    padding-left: 1.5vw;
+  }
+  .js #demo-menu #demo-menu-nav .menu li.menu-item--expanded > a {
+    background: none;
+  }
+  #demo-menu #demo-menu-nav .menu li.menu-item--expanded > a:hover {
+    background-color: #ccc;
+  }
+  #demo-menu #demo-menu-nav .menu li.menu-item--expanded .menu {
+    background: #FFFFFF;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 1.68px 1.68px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.1) 0 1.68px 1.68px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1.68px 1.68px;
+    clip: rect(0px,0px,0px,0px);
+    display: block;
+    height: auto;
+    opacity: 0;
+    padding: 10px 0;
+    right: auto;
+    top: 50px;
+    -webkit-transform: translateY(-1.5em);
+    transform: translateY(-1.5em);
+    /* The animation controls how quickly the menu disappears */
+    -webkit-transition: opacity 0s, transform 0s;
+    transition: opacity 0s, transform 0s;
+    visibility: hidden;
+    width: 300px;
+    z-index: 0;
+  }
+  #demo-menu #demo-menu-nav .menu li.menu-item--expanded:hover ul {
+    clip: auto;
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    /* The animation controls how quickly the submenu appears */
+    -webkit-transition: opacity 0.4s, transform 0.35s, z-index 0.45s;
+    transition: opacity 0.4s, transform 0.35s, z-index 0.45s;
+    visibility: visible;
+    z-index: 3;
+  }
+  #demo-menu.menu-open #demo-menu-nav .menu li.menu-item--expanded.submenu-open ul {
+    height: auto;
+    overflow-y: visible;
+    right: auto;
+    /* The animation controls how quickly the menu appears */
+    -webkit-transition: opacity 0.4s, transform 0.35s, z-index 0.45s;
+    transition: opacity 0.4s, transform 0.35s, z-index 0.45s;
+    visibility: visible;
+  }
+  #demo-menu #demo-menu-nav .menu li.menu-item--expanded li:first-of-type {
+    display: none;
+  }
+  #demo-menu #demo-menu-nav .menu li.last ul {
+    right: 0;
+  }
+}
+
+/*
+ * Menu open/close bar
+ */
+#demo-menu #demo-menu-button-oc {
+  cursor: pointer;
+  display: block;
+  font-size: 1.016rem;
+  padding: 2px 0;
+  text-align: right;
+  text-decoration: none;
+  width: 100%;
+}
+#demo-menu-button-oc div.wrap {
+  color: #0071B3;
+  line-height: 40px;
+  display: inline;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-right: 15px;
+}
+#demo-menu-button-oc div.icon-menu {
+  float: right;
+  padding-right: 20px;
+  padding-top: 11px;
+}
+#demo-menu-button-oc div.icon-menu span {
+  background-color: #0071B3;
+  border-radius: 8px;
+  display: block;
+  height: 2px;
+  margin: 3px 0;
+  width: 17px;
+}
+#demo-menu:target #demo-menu-button-oc .icon-menu,
+#demo-menu.menu-open #demo-menu-button-oc .icon-menu {
+  padding-top: 8px;
+}
+#demo-menu:target #demo-menu-button-oc .icon-menu span,
+#demo-menu.menu-open #demo-menu-button-oc .icon-menu span {
+  width: 18px;
+}
+#demo-menu:target #demo-menu-button-oc .icon-menu .bar1,
+#demo-menu.menu-open #demo-menu-button-oc .icon-menu .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-8px, 4px);
+  transform: rotate(-45deg) translate(-8px, 4px);
+}
+#demo-menu:target #demo-menu-button-oc .icon-menu .bar2,
+#demo-menu.menu-open #demo-menu-button-oc .icon-menu .bar2 {
+  opacity: 0;
+}
+#demo-menu:target #demo-menu-button-oc .icon-menu .bar3,
+#demo-menu.menu-open #demo-menu-button-oc .icon-menu .bar3 {
+  -webkit-transform: rotate(45deg) translate(-3px, 1px);
+  transform: rotate(45deg) translate(-3px, 1px);
+}
+
+/*
+ * No-JS fallback
+ */
+#demo-menu:target #demo-menu-nav {
+  display: block;
+  right: 0;
+  /* The animation controls how quickly the menu appears */
+  -webkit-transition: right 0.4s ease-in-out;
+  transition: right 0.4s ease-in-out;
+}

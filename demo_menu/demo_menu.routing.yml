@@ -1,0 +1,12 @@
+demo_menu_page:
+  path: '/demo-menu/{name}'
+  defaults:
+    _controller: '\Drupal\demo_menu\Controller\DemoPageController::content'
+    _title: 'Demo page'
+    name: 'Name'
+  options:
+    parameters:
+      name:
+        type: string
+  requirements:
+    _permission: 'access content'

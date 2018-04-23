@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ * Contains demo_menu.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function demo_menu_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the demo_menu module.
+    case 'help.page.demo_menu':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('An off-canvas multi-level navigation menu') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_top().
+ */
+function demo_menu_page_top(array &$page_top) {
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  if (\Drupal::config('system.theme')->get('default') == $theme) {
+    $page_top['demo_menu'] = array(
+      '#theme' => 'demo_menu_nav',
+      '#menu' => demo_menu_view(),
+    );
+    $page_top['demo_menu']['#attached']['library'][] = 'demo_menu/demo-menu';
+  } // if
+} // function demo_menu_page_top()
+
+/**
+ * Implements hook_theme().
+ */
+function demo_menu_theme() {
+  return [
+    'demo_menu_nav' => [
+      'template' => 'demo-menu-nav',
+      'variables' => [ 'menu' => NULL ],
+    ],
+  ];
+}
+
+/**
+ * Callback for the 'demo-menu' output
+ */
+function demo_menu_view() {
+  $menu_name = 'demo-menu';
+  $menu_tree = \Drupal::menuTree();
+
+  // Build the typical default set of menu tree parameters.
+  $parameters = $menu_tree->getCurrentRouteMenuTreeParameters($menu_name);
+
+  // Load the tree based on this set of parameters.
+  $tree = $menu_tree->load($menu_name, $parameters);
+  $menu = $menu_tree->build($tree);
+
+  return ['#markup' => \Drupal::service('renderer')->renderPlain($menu)];
+} // function demo_menu_view()

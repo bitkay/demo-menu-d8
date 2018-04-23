@@ -1,0 +1,2 @@
+demo_menu__pages_links:
+  deriver: \Drupal\demo_menu\Plugin\Derivative\DemoMenuLinkDerivative

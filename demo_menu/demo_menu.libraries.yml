@@ -1,0 +1,9 @@
+demo-menu:
+  version: 1.x
+  css:
+    theme:
+      css/demo_menu.css: {}
+  js:
+    js/demo_menu.js: { }
+  dependencies:
+    - core/jquery
