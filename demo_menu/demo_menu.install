@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Install, update and uninstall functions for the demo_menu module.
+ * Install, update, and uninstall functions for the demo_menu module.
  */
 
 /**
@@ -10,4 +10,4 @@
  */
 function demo_menu_uninstall() {
   \Drupal::configFactory()->getEditable('system.menu.demo-menu')->delete();
-} // demo_menu_uninstall()
+}
